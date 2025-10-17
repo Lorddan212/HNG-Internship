@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daniel J Accessible Profile Card</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --card-bg: #00f9e4;
+      --text: #0505ff;
+      --muted: #000000;
+      --accent: #1c00f0;
+      --radius: 20px;
+      --shadow: 0 4px 10px rgba(4, 50, 255, 0.984);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    article[data-testid="test-profile-card"] {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    img[data-testid="test-user-avatar"] {
+      width: 150px;
+      height: 170px;
+      border-radius: 40%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    img[data-testid="test-user-avatar"] {
+      transition: transform 0.3s ease;
+    }
+
+    img[data-testid="test-user-avatar"]:hover {
+  transform: scale(1.05);
+    }
+
+    h2[data-testid="test-user-name"] {
+      margin: 0.2rem 0;
+      font-size: 1.6rem;
+    }
+
+    p[data-testid="test-user-bio"] {
+      color: var(--muted);
+      margin-top: 0.3rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    nav[data-testid="test-user-social-links"] ul {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+      padding: 0;
+      margin: 0.5rem 0;
+      justify-content: center;
+    }
+
+    nav[data-testid="test-user-social-links"] a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav[data-testid="test-user-social-links"] a:hover,
+    nav[data-testid="test-user-social-links"] a:focus {
+      text-decoration: underline;
+    }
+
+    section {
+      margin-top: 1rem;
+      width: 100%;
+      text-align: left;
+    }
+
+    section h3 {
+      margin-bottom: 0.1rem;
+      color: var(--text);
+    }
+
+    ul[data-testid="test-user-hobbies"],
+    ul[data-testid="test-user-dislikes"],
+    ul[data-testid="test-user-skills"] {
+      list-style: disc;
+      margin-left: 1.5rem;
+      color: var(--muted);
+    }
+
+    address[data-testid="test-user-contact"] {
+      font-style: normal;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      article[data-testid="test-profile-card"] {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article data-testid="test-profile-card">
+    <figure>
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=256&q=60"
+           alt="Profile Picture"
+           data-testid="test-user-avatar">
+    </figure>
+
+    <header>
+      <h2 data-testid="test-user-name">Daniel Jegbefumhen</h2>
+    </header>
+    <p class="text-muted">|  Frontend Web Developer |</p>
+
+    <p data-testid="test-user-bio">
+      A passionate and results-driven frontend web developer skilled in HTML, CSS, and JavaScript
+      who loves turning ideas into interactive, responsive websites. Enjoys writing clean code,
+      learning new technologies, and crafting designs that balance beauty and usability, and is
+      committed to delivering efficient, high-quality code.
+    </p>
+
+    <nav aria-label="User social links" data-testid="test-user-social-links">
+      <ul>
+        <li><a href="https://x.com/lorddan212" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-twitter">Twitter</a></li>
+        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-linkedin">LinkedIn</a></li>
+        <li><a href="https://github.com/Lorddan212/" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-github">GitHub</a></li>
+      </ul>
+    </nav>
+    <section aria-labelledby="skills-heading">
+      <h3 id="skills-heading">Skills</h3>
+      <ul data-testid="test-user-skills">
+        <li>HTML, CSS &amp; JavaScript</li>
+        <li>Responsive Web Design</li>
+        <li>Git &amp; Version Control</li>
+        <li>Time Management</li>
+      </ul>
+    </section>
+    <section aria-labelledby="hobbies-heading">
+      <h3 id="hobbies-heading">Hobbies</h3>
+      <ul data-testid="test-user-hobbies">
+        <li>Coding personal projects</li>
+        <li>Learning new programming languages</li>
+        <li>Exploring UI/UX design trends</li>
+        <li>Reading tech blogs and tutorials</li>
+        <li>Contributing to open-source projects</li>
+        <li>Solving coding challenges</li>
+        <li>Watching web development tutorials</li>
+      </ul>
+
+    </section>
+    <section aria-labelledby="dislikes-heading">
+      <h3 id="dislikes-heading">Dislikes</h3>
+      <ul data-testid="test-user-dislikes">
+        <li>Slow-loading websites</li>
+        <li>Poorly structured code</li>
+        <li>Browser compatibility issues</li>
+        <li>Unresponsive design layouts</li>
+        <li>Outdated web technologies</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="contact-heading">
+      <h3 id="contact-heading">Contact Me</h3>
+      <address data-testid="test-user-contact">
+        Email: <a href="mailto:jegbefumhendaniel@gmail.com">jegbefumhendaniel@gmail.com</a><br>
+        Phone: <a href="tel:+2348109368514">+234&nbsp;810&nbsp;936&nbsp;8514</a>
+      </address>
+    </section>
+  </article>
+</body>
+</html>
