@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Me</title>
+  <style>
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #0505ff;
+      padding: 0.75rem 1rem;
+      border-bottom: 10px solid #00f9e4;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .site-nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus {
+      color: #00f9e4;
+      text-decoration: underline;
+    }
+
+    /* Highlight current page link */
+    .site-nav a.active {
+      color: #00f9e4;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+    .site-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+      }
+    }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #fafafa;
+      color: #0505ff;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+    main[data-testid="test-about-page"] {
+      max-width: 800px;
+      background: #00f9e4;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin-top: 80px;
+    }
+    section {
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      color: #0000cc;
+    }
+    p {
+      color: #000;
+    }
+    @media (max-width: 600px) {
+      main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Main navigation" class="site-nav">
+    <ul>
+      <li><a href="index.html" data-testid="test-nav-home">Home</a></li>
+      <li><a href="about.html" data-testid="test-nav-about">About</a></li>
+      <li><a href="contact.html" data-testid="test-nav-contact">Contact</a></li>
+    </ul>
+  </nav>
+  <main data-testid="test-about-page">
+    <section>
+      <h2>Bio</h2>
+      <p data-testid="test-about-bio">
+        I’m a passionate frontend web developer who enjoys crafting user-friendly, responsive, and accessible websites. I’m committed to learning, experimenting, and growing in modern web technologies.
+      </p>
+    </section>
+
+    <section>
+      <h2>Goals in this Program</h2>
+      <p data-testid="test-about-goals">
+        My goal is to strengthen my JavaScript and UI development skills, build real-world projects, and collaborate effectively with other developers.
+      </p>
+    </section>
+
+    <section>
+      <h2>Areas of Low Confidence</h2>
+      <p data-testid="test-about-confidence">
+        I’m still improving my advanced JavaScript and API integration skills, but I’m confident that continuous practice will help me master them.
+      </p>
+    </section>
+
+    <section>
+      <h2>Note to Future Self</h2>
+      <p data-testid="test-about-future-note">
+        Keep pushing boundaries, keep learning, and never be afraid to ask questions. Growth happens when you step outside your comfort zone.
+      </p>
+    </section>
+
+    <section>
+      <h2>Extra Thoughts</h2>
+      <p data-testid="test-about-extra">
+        The web evolves quickly — stay curious, stay adaptable, and always focus on building meaningful experiences for users.
+      </p>
+    </section>
+  </main>
+</body>
+<script>
+ // Highlight current nav link
+      const currentPage = location.pathname.split('/').pop();
+        document.querySelectorAll('.site-nav a').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+          }
+        });
+</script>
+</html>
