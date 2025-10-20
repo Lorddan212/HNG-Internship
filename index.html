@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <title>Daniel J Accessible Profile Card</title>
   <style>
     :root {
@@ -14,7 +15,53 @@
       --radius: 20px;
       --shadow: 0 4px 10px rgba(4, 50, 255, 0.984);
     }
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #0505ff;
+      padding: 0.75rem 1rem;
+      border-bottom: 10px solid #00f9e4;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
 
+    .site-nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus {
+      color: #00f9e4;
+      text-decoration: underline;
+    }
+
+    /* Highlight current page link */
+    .site-nav a.active {
+      color: #00f9e4;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+    .site-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+      }
+    }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -26,7 +73,7 @@
       min-height: 100vh;
       padding: 1rem;
     }
-
+    
     article[data-testid="test-profile-card"] {
       background: var(--card-bg);
       border-radius: var(--radius);
@@ -38,6 +85,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      margin-top: 80px;
     }
 
     img[data-testid="test-user-avatar"] {
@@ -123,6 +171,14 @@
   </style>
 </head>
 <body>
+  <nav aria-label="Main navigation" class="site-nav">
+    <ul>
+      <li><a href="index.html" data-testid="test-nav-home">Home</a></li>
+      <li><a href="about.html" data-testid="test-nav-about">About</a></li>
+      <li><a href="contact.html" data-testid="test-nav-contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <article data-testid="test-profile-card">
     <figure>
       <img src="/Image/PP1.jpg"
@@ -131,22 +187,22 @@
     </figure>
 
     <header>
-      <h2 data-testid="test-user-name">Daniel Jegbefumhen</h2>
+      <h2 data-testid="test-user-name" aria-label="Daniel Jegbefumhen">Daniel Jegbefumhen</h2>
     </header>
     <p class="text-muted">|  Frontend Web Developer |</p>
 
     <p data-testid="test-user-bio">
       A passionate and results-driven frontend web developer skilled in HTML, CSS, and JavaScript
-      who loves turning ideas into interactive, responsive websites. Enjoys writing clean code,
-      learning new technologies, and crafting designs that balance beauty and usability, and is
+      who loves turw technologies, and crafting designs that balance beauty and usability, and is
       committed to delivering efficient, high-quality code.
     </p>
+    <p data-testid="test-user-time" id="time">Timestamp (ms):</p>
 
-    <nav aria-label="User social links" data-testid="test-user-social-links">
+    <nav data-testid="test-user-social-links" aria-label="User social links">
       <ul>
-        <li><a href="https://x.com/lorddan212" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-twitter">Twitter</a></li>
-        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-linkedin">LinkedIn</a></li>
-        <li><a href="https://github.com/Lorddan212/" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-github">GitHub</a></li>
+        <li><a href="https://x.com/lorddan212" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-twitter"><i class="fab fa-twitter"></i> Twitter </a></li>
+        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+        <li><a href="https://github.com/Lorddan212/" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-github"><i class="fab fa-github"></i> GitHub</a></li>
       </ul>
     </nav>
     <section aria-labelledby="skills-heading">
@@ -191,4 +247,24 @@
     </section>
   </article>
 </body>
+<script>
+      // Select the time element
+      const timeElement = document.querySelector('[data-testid="test-user-time"]');
+
+      // Function to update the time in milliseconds
+      function updateTime() {
+        timeElement.textContent = Date.now();
+      }
+          updateTime();
+      
+          setInterval(updateTime, 1000);
+          // Highlight current nav link
+      const currentPage = location.pathname.split('/').pop();
+        document.querySelectorAll('.site-nav a').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+          }
+        });
+
+</script>
 </html>
